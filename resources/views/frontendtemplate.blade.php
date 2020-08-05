@@ -9,6 +9,8 @@
   <meta name="author" content="">
   <meta name="csrf-token" content="{{ csrf_token() }}">
 
+  <!-- <meta name="csrf-token" content="{{ csrf_token() }}"> --><!-- Local Storage CSRF  -->
+
 
   <title>Online Shopping - @yield('title')</title>
 
@@ -38,7 +40,7 @@
             </a>
           </li>
           <li class="nav-item">
-        <a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hiden="true" style="font-size:30px;" ></i>
+        <a class="nav-link" href="{{route('cart')}}"><i class="fa fa-shopping-cart" aria-hiden="true" style="font-size:30px;" ></i>
           <span class="badge badge-light product_count">0</span></a>
       </li>
           <li class="nav-item">

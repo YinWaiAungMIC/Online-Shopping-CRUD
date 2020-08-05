@@ -10,3 +10,4 @@ HOMEWORK
 
 		-upload into github repo
 		
+-Not change immediately when quantity change

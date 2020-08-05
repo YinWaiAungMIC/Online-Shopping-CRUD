@@ -17,6 +17,47 @@
 
   <!-- Custom styles for this template-->
   <link href="{{ asset('backendtemplate/css/sb-admin-2.min.css')}}" rel="stylesheet">
+   <!-- Custom styles for this template-->
+  <link href="{{ asset('backend_template/css/sb-admin-2.min.css') }}" rel="stylesheet">
+
+  <style type="text/css">
+    .sidebar {
+      transition: all .4s;
+    }
+    .bg-gradient-info {
+      background-image: linear-gradient(180deg,#36b9cc 18%, #189AD3 100%);
+      color: #fff;
+    }
+    .btn-info {
+      background-color: #36b9cc;
+      background-image: linear-gradient(180deg,#36b9cc 18%, #189AD3 100%);
+      background-size: cover;
+      transition: opacity .25s ease;
+    }
+    .btn-info:hover, .btn-info:active {
+      opacity: 0.85;
+    }
+    .dropdown-item.active, .dropdown-item:active {
+      background-color: #36b9cc;
+    }
+    .form-control:focus, .custom-file-input:focus {
+      border-color: rgba(54, 185, 204, .5) !important;
+      box-shadow: 0 0 0 0.2rem rgba(54, 185, 204, .25) !important;
+    }
+    .td-action {
+      min-width: 250px;
+    }
+    .sidebar .nav-item .collapse .collapse-inner .collapse-item.active,
+    .sidebar .nav-item .collapsing .collapse-inner .collapse-item.active {
+      color: #36b9cc !important;
+    }
+    .page-item.active .page-link {
+      background-color: #36b9cc;
+      border-color: #36b9cc;
+    }
+  </style>
+
+
   
   
 </head>
@@ -34,7 +75,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">OS Admin <sup>2</sup></div>
       </a>
 
       <!-- Divider -->
@@ -56,79 +97,38 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+      <li class="nav-item {{request()->routeIs('items*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{route('items.index')}}">
           <i class="fas fa-fw fa-cog"></i>
-          <span>Components</span>
+          <span>Items</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">Buttons</a>
-            <a class="collapse-item" href="cards.html">Cards</a>
-          </div>
-        </div>
+        
+      </li>
+      
+      <li class="nav-item {{request()->routeIs('brands*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{route('brands.index')}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Brands</span>
+        </a>
+        
+      </li>
+      <li class="nav-item {{request()->routeIs('categories*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{route('categories.index')}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Category</span>
+        </a>
+        
+      </li>
+      <li class="nav-item {{request()->routeIs('subcategories*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{route('subcategories.index')}}">
+          <i class="fas fa-fw fa-cog"></i>
+          <span>Subcategories</span>
+        </a>
+        
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        Addons
-      </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
-
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="tables.html">
-          <i class="fas fa-fw fa-table"></i>
-          <span>Tables</span></a>
-      </li>
-
+      
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

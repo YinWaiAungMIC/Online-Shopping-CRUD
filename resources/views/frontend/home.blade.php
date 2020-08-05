@@ -40,7 +40,7 @@
           </div>
           <div class="card-footer">
             <a href="{{route('itemdetail',$item->id)}}" class="btn btn-primary btn-sm">More Info</a>
-            <a href="#" class="btn btn-success btn-sm">Add to Cart</a>
+            <a href="{{route('cart')}}" class="btn btn-success btn-sm">Add to Cart</a>
           </div>
         </div>
       </div>

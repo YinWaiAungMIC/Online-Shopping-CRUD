@@ -30,6 +30,7 @@
             
           </tbody>
         </table>
+        <a href="#" class="btn btn-success checkout">Checkout</a>
       </div>
       
 
@@ -42,10 +43,55 @@
 
 @section('script')
 
-<script type="text/javascript" src="{{asset('frontendtemplate/js/custom.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontendtemplate/js/custom.js')}}">
+	
+</script>
 	<script type="text/javascript">
   $(document).ready(function(){
   	showTable();
+
+    $(".product_list").on('click','.btn_plus',function(){
+     // alert('plus');
+
+      var id=$(this).data('id');
+     // console.log(id);
+      change_product_quantity(1,id);
+    })
+    $(".product_list").on('click','.btn_minus',function(){
+      //alert('minus');
+      var id=$(this).data('id');
+      //console.log(id);
+      change_product_quantity(2,id);
+    })
+
+    function change_product_quantity(type,id){
+      var my_cart=localStorage.getItem('my_cart');
+      var my_cart_obj=JSON.parse(my_cart);
+      $(my_cart_obj.product_list).each(function(i,v){
+        if(v.id==id){
+          if(type==1){
+            v.quantity++;
+          }else{
+            if(v.quantity==1){
+            var ans=confirm('Are you sure to delete?');
+            if(ans){
+            my_cart_obj.product_list.splice(i,1);
+          }
+          }else{
+
+            v.quantity--;
+          }
+          }
+
+          }
+
+     
+      })
+      localStorage.setItem('my_cart',JSON.stringify(my_cart_obj));
+      showTable();
+      show_product_count();
+      
+    }
 
     function showTable(){
       var my_cart=localStorage.getItem('my_cart');
